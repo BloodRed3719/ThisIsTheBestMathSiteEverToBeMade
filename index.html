@@ -56,7 +56,7 @@
 <script>
     var keysPressed = {};
     var requiredKeys = ["q", "w", "e"];
-
+    var requiredKeys2 = ["o", "l", "i"]
     window.addEventListener("keydown", function(event) {
         keysPressed[event.key] = true;
         var allKeysPressed = requiredKeys.every(function(key) {
@@ -70,7 +70,7 @@
                 if (allKeysStillPressed) {
                     document.getElementById("secretContent").classList.remove("hidden");
                 }
-            }, 3000); // 3000 milliseconds = 3 seconds
+            }, 1000); // 3000 milliseconds = 3 seconds
         }
     });
 
