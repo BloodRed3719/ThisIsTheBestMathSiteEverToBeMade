@@ -1,48 +1,76 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <script>
-        var name = window.prompt("What is your name? (I can tell if you are lying) :)")
-        document.write("Hello, " + name + ".")
-        if (name === "Oliver" || name === "Mason" || name === "Enrique" || name === "Tomoya") {
-            alert("Welcome.")
-        } else if (name === "Haru") {
-            alert("ayo what?????")
-        }
-    </script>
+    <title>Secret Page</title>
     <style>
-        p {
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+        .hidden {
+            display: none;
+        }
+        #secretLinks {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             text-align: center;
-            font-family: Arial, sans-serif;
         }
-        #warning-text {
-            color: red;
-            font-family: Arial, sans-serif;
-        }
-        .container {
-            text-align: center
-        }
-        .aLink {
+        .links a {
+            display: block;
+            margin: 10px;
+            padding: 10px 20px;
+            border: 2px solid #3498db;
+            border-radius: 5px;
+            font-size: 18px;
+            font-weight: bold;
             text-decoration: none;
-            color: inherit;
-            cursor: not-allowed;
-            font-family: Arial, sans-serif;
+            color: #3498db;
+            background-color: #fff;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .links a:hover {
+            background-color: #3498db;
+            color: #fff;
         }
     </style>
-    <meta charset="UTF-8">
-    <title>Site-1</title>
-    <p id="warning-text">WARNING: DO NOT SHARE SITES WITH ANYONE!</p>
-    <div class="container">
-    <a class="aLink" href="https://www.crazygames.com/">Crazy Games</a>
-    <br><br>
-    <a class="aLink" href="https://sites.google.com/view/playunblockedgames67/" >Unblocked Games 67</a>
-    <br><br>
-    <a class="aLink" href="https://jakwhegf.github.io/uab123/">Retro Bowl 1</a>
-    <br><br>
-    <a href=""></a>
-    </div>
 </head>
 <body>
+<div id="secretContent" class="hidden">
+    <div id="secretLinks" class="links">
+        <a href="#">Link 1</a>
+        <a href="#">Link 2</a>
+        <a href="#">Link 3</a>
+    </div>
+</div>
+<script>
+    var keysPressed = {};
+    var requiredKeys = ["q", "w", "e"];
 
+    window.addEventListener("keydown", function(event) {
+        keysPressed[event.key] = true;
+        var allKeysPressed = requiredKeys.every(function(key) {
+            return keysPressed[key];
+        });
+        if (allKeysPressed) {
+            setTimeout(function() {
+                var allKeysStillPressed = requiredKeys.every(function(key) {
+                    return keysPressed[key];
+                });
+                if (allKeysStillPressed) {
+                    document.getElementById("secretContent").classList.remove("hidden");
+                }
+            }, 3000); // 3000 milliseconds = 3 seconds
+        }
+    });
+
+    window.addEventListener("keyup", function(event) {
+        delete keysPressed[event.key];
+    });
+</script>
 </body>
 </html>
