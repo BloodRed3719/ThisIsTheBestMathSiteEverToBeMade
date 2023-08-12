@@ -54,9 +54,10 @@
     </div>
 </div>
 <script>
+
     var keysPressed = {};
     var requiredKeys = ["q", "w", "e"];
-    var requiredKeys2 = ["o", "l", "i"]
+    
     window.addEventListener("keydown", function(event) {
         keysPressed[event.key] = true;
         var allKeysPressed = requiredKeys.every(function(key) {
@@ -77,6 +78,7 @@
     window.addEventListener("keyup", function(event) {
         delete keysPressed[event.key];
     });
+    
 </script>
 </body>
 </html>
